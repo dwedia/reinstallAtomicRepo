@@ -65,6 +65,6 @@ if [[ "4" = $(cat ./counter) ]]; then
     echo "Reloading Firewall Rules"
     sudo firewall-cmd --reload
   fi
-  echo "5" > ./counter
+  echo "0" > ./counter
   systemctl reboot
 fi
