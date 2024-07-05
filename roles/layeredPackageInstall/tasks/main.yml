@@ -1,0 +1,10 @@
+---
+- name: remove unwanted layered packages
+  community.general.rpm_ostree_pkg:
+    name: firefox firefox-langpacks-127.0-1.fc40.x86_64
+    state: absent
+
+- name: Install desired layered packages
+  community.general.rpm_ostree_pkg:
+    name: distrobox ffmpegthumbnailer neovim syncthing tailscale terminator tlp vim
+    state: present

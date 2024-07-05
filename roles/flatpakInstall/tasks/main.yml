@@ -1,0 +1,40 @@
+---
+- name: Add the flathub flatpak repository remote to the user installation
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: Add the flathub flatpak repository remote to the system installation
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: system
+
+- name: Install flatpaks
+  community.general.flatpak:
+    name:
+      - com.github.tchx84.Flatseal
+      - com.mattjakeman.ExtensionManager
+      - com.spotify.Client
+      - com.vscodium.codium
+      - md.obsidian.Obsidian
+      - org.signal.Signal
+      - org.videolan.VLC
+      - org.mozilla.firefox
+      - com.brave.Browser
+      - org.freedesktop.Platform.ffmpeg-full/x86_64/22.08
+      - org.libreoffice.LibreOffice
+    method: user
+
+- name: Reinstall any flatpaks from fedora repos to flathub
+  ansible.builtin.shell: flatpak install -y --reinstall flathub $(flatpak list --app-runtime=org.fedoraproject.Platform --columns=application | tail -n +1 )
+
+- name: Remove the fedora flatpak repository remote to the system installation
+  community.general.flatpak_remote:
+    name: fedora
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: system
