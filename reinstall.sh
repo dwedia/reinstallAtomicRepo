@@ -51,6 +51,10 @@ if [[ "4" = $(cat ./counter) ]]; then
     echo "Git username and email set successfully!"
     sleep 5
   fi
+  # Reinstall flatpaks from fedora repo, as flathub repo
+  flatpak install -y --reinstall flathub $(flatpak list --app-runtime=org.fedoraproject.Platform --columns=application | tail -n +1 )
+  flatpak --user install -y --reinstall flathub $(flatpak list --app-runtime=org.fedoraproject.Platform --columns=application | tail -n +1 )
+  
   # Set up firewall with firewalld if Distribution is Fedora
   if [ ! -f /usr/bin/firewall-cmd ];
   then
