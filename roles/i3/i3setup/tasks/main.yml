@@ -13,6 +13,6 @@
   insertafter: '^exec --no-startup-id dex-autostart --autostart --environment i3'
   state: present
   line: |
-    
+    #
     # Launch lxpolkit
     exec_always --no-startup-id lxpolkit &
