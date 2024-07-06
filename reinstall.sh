@@ -14,10 +14,10 @@ if [[ "2" = $(cat ./counter) ]]; then
   echo "########################################################"
   echo "### Second run, installing rpmfusion, and rebooting. ###"
   echo "########################################################"
-  rpm-ostree install distrobox https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  rpm-ostree install --apply-live -y  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   sleep 2
   echo "3" > ./counter
-  systemctl reboot
+  # systemctl reboot
 fi
 
 if [[ "3" = $(cat ./counter) ]]; then
@@ -26,10 +26,10 @@ if [[ "3" = $(cat ./counter) ]]; then
   echo "##############################################################"
   if [[ ! -f /usr/bin/ansible ]];
   then
-    rpm-ostree install -y ansible-core wdisplays ffmpegthumbnailer neovim syncthing terminator tlp vim eza 
+    rpm-ostree install --apply-live -y ansible-core distrobox wdisplays ffmpegthumbnailer neovim syncthing terminator tlp vim eza 
     sleep 60
     echo "4" > ./counter
-    systemctl reboot
+    # systemctl reboot
   fi
 fi
 
