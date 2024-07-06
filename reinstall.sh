@@ -17,7 +17,7 @@ if [[ "2" = $(cat ./counter) ]]; then
   rpm-ostree install --apply-live -y  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   sleep 2
   echo "3" > ./counter
-  # systemctl reboot
+  systemctl reboot
 fi
 
 if [[ "3" = $(cat ./counter) ]]; then
