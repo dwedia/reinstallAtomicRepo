@@ -1,0 +1,3 @@
+- name: Reinstall playbook
+  hosts: localhost
+  roles:
