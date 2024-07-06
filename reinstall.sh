@@ -22,14 +22,13 @@ fi
 
 if [[ "3" = $(cat ./counter) ]]; then
   echo "##############################################################"
-  echo "### Third run, Installing Layered Packages, and rebooting. ###"
+  echo "### Third run, Installing Layered Packages. ###"
   echo "##############################################################"
   if [[ ! -f /usr/bin/ansible ]];
   then
     rpm-ostree install --apply-live -y ansible-core wdisplays ffmpegthumbnailer neovim syncthing tailscale terminator tlp vim eza 
     sleep 2
     echo "4" > ./counter
-    systemctl reboot
   fi
 fi
 
