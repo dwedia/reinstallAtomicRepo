@@ -23,7 +23,7 @@
 - name: Export packages in fwsbox container
   become: no
   ansible.builtin.shell:
-    cmd: /usr/bin/distrobox enter fwsbox -- "{{ item }}"
+    cmd: /usr/bin/distrobox enter fwsbox -- sh -c "{{ item }}"
   loop:
     - "distrobox-export -b /usr/bin/htop -ep $HOME/.local/bin"
     - "distrobox-export -b /usr/bin/tldr -ep $HOME/.local/bin"
