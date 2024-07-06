@@ -7,10 +7,10 @@
     mode: 0744
     backup: true
 
-- name: add lxpolkit to i3config
-  ansible.builtin.lineinfile:
-  insertafter: '^exec --no-startup-id dex-autostart --autostart --environment i3'
-  state: present
-  line: |
-    # Launch lxpolkit
-    exec_always --no-startup-id lxpolkit &
+#- name: add lxpolkit to i3config
+#  ansible.builtin.lineinfile:
+#  insertafter: '^exec --no-startup-id dex-autostart --autostart --environment i3'
+#  state: present
+#  line: |
+#    # Launch lxpolkit
+#    exec_always --no-startup-id lxpolkit &
