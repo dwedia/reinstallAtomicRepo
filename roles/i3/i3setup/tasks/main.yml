@@ -1,7 +1,7 @@
 ---
 - name: Create i3 config folder
   ansible.builtin.file:
-    path: "{{ ansible_facts['HOME'] }}"/.config/i3/
+    path: "{{ ansible_user_dir }}/.config/i3/"
     state: directory
     mode: 0744
     owner: "{{ ansible_user_id }}"
@@ -10,7 +10,7 @@
 - name: Copy i3 config
   ansible.builtin.copy:
     src: i3config
-    dest: "{{ ansible_facts['HOME'] }}"/.config/i3/config
+    dest: "{{ ansible_user_dir }}/.config/i3/config"
     mode: 0744
     backup: true
 
