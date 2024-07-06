@@ -3,6 +3,7 @@
   community.general.rpm_ostree_pkg:
     name: firefox firefox-langpacks-127.0-1.fc40.x86_64
     state: absent
+  failed_when: false
 
 - name: Install desired layered packages
   community.general.rpm_ostree_pkg:

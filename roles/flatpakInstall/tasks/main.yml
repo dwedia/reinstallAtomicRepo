@@ -30,12 +30,12 @@
       - org.libreoffice.LibreOffice
     method: user
 
-#- name: Reinstall any flatpaks from fedora repos to flathub
-#  ansible.builtin.shell: flatpak install -y --reinstall flathub $(flatpak list --app-runtime=org.fedoraproject.Platform --columns=application | tail -n +1 )
+- name: Reinstall any flatpaks from fedora repos to flathub
+  ansible.builtin.shell: flatpak install -y --reinstall flathub $(flatpak list --app-runtime=org.fedoraproject.Platform --columns=application | tail -n +1 )
 
-#- name: Remove the fedora flatpak repository remote to the system installation
-#  community.general.flatpak_remote:
-#    name: fedora
-#    state: present
-#    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-#    method: system
+- name: Remove the fedora flatpak repository remote to the system installation
+  community.general.flatpak_remote:
+    name: fedora
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: system
