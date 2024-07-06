@@ -14,10 +14,25 @@
     mode: 0744
     backup: true
 
-#- name: add lxpolkit to i3config
-#  ansible.builtin.lineinfile:
-#  insertafter: '^exec --no-startup-id dex-autostart --autostart --environment i3'
-#  state: present
-#  line: |
-#    # Launch lxpolkit
-#    exec_always --no-startup-id lxpolkit &
+- name: Create picom config folder
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/picom/"
+    state: directory
+    mode: 0744
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+
+- name: Copy picom config
+  ansible.builtin.copy:
+    src: picomConfig
+    dest: "{{ ansible_user_dir }}/.config/picom/picom.conf"
+    mode: 0744
+    backup: true
+
+- name: Create Wallpapers config folder
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/Pictures/Wallpapers"
+    state: directory
+    mode: 0744
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
