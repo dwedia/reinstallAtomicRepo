@@ -13,9 +13,6 @@ set $mod Mod4
 
 ############ Autostart stuff ############
 
-exec_always --no-startup-id pkill -f volumeicon
-exec_always --no-startup-id pkill -f pasystray
-
 # Launch lxpolkit
 exec_always --no-startup-id lxpolkit &
 
