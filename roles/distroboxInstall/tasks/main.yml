@@ -9,7 +9,7 @@
 - name: Install packages in fwsbox container
   become: no
   ansible.builtin.shell:
-    cmd: /usr/bin/distrobox enter fwsbox -e "{{ item }}"
+    cmd: /usr/bin/distrobox enter fwsbox -- sh -c "{{ item }}"
   loop:
     - sudo dnf install -y htop
     - sudo dnf install -y tldr
