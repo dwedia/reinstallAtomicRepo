@@ -1,0 +1,18 @@
+---
+
+- name: Copy default i3 config to user .config
+  ansible.builtin.copy:
+    src: /etc/i3/config
+    dest: /home/$USER/.config/i3/config
+    remote_src: true
+    mode: 0744
+    backup: true
+
+- name: add lxpolkit to i3config
+  ansible.builtin.blockinfile:
+  insertafter: '^exec --no-startup-id dex-autostart --autostart --environment i3'
+  state: present
+  block: |
+    
+    # Launch lxpolkit
+    exec_always --no-startup-id lxpolkit &
