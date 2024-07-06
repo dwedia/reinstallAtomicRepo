@@ -46,10 +46,6 @@ if [[ "4" = $(cat ./counter) ]]; then
   sleep 2
   # Check if username or email is empty. if not, set git username and email
   if [[ -z "$gitUserName" || -z "$gitUserEmail" ]]; then
-    echo "Error: Username and email cannot be empty!"
-    sleep 10
-    exit 1
-  else
     git config --global user.name "$gitUserName"
     git config --global user.email "$gitUserEmail"
     echo "Git username and email set successfully!"
