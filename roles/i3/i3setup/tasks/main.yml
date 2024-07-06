@@ -36,3 +36,10 @@
     mode: 0744
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
+
+- name: Copy Wallpaper image
+  ansible.builtin.copy:
+    src: Wallpaper.png
+    dest: "{{ ansible_user_dir }}/Pictures/Wallpapers/Wallpaper.png"
+    mode: 0744
+    backup: true
