@@ -10,35 +10,31 @@ if [[ "1" = $(cat ./counter) ]]; then
   systemctl reboot
 fi
 
+#if [[ "2" = $(cat ./counter) ]]; then
+#  echo "########################################################"
+#  echo "### Second run, installing rpmfusion, and rebooting. ###"
+#  echo "########################################################"
+#  rpm-ostree install distrobox https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+#  sleep 2
+#  echo "3" > ./counter
+#  systemctl reboot
+#fi
+
 if [[ "2" = $(cat ./counter) ]]; then
-  echo "########################################################"
-  echo "### Second run, installing rpmfusion, and rebooting. ###"
-  echo "########################################################"
-  rpm-ostree install distrobox https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-  sleep 2
-  echo "3" > ./counter
-  systemctl reboot
+  echo "##############################################################"
+  echo "### Second run, Installing Layered Packages, and rebooting. ###"
+  echo "##############################################################"
+  if [[ ! -f /usr/bin/ansible ]];
+  then
+    rpm-ostree install --idempotent --apply-live -y ansible-core wdisplays ffmpegthumbnailer neovim syncthing tailscale terminator tlp vim eza https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    sleep 2
+    echo "3" > ./counter
+    systemctl reboot
 fi
 
 if [[ "3" = $(cat ./counter) ]]; then
-  echo "##########################################################"
-  echo "### Third run, Installing ansible-core, and rebooting. ###"
-  echo "##########################################################"
-  if [[ ! -f /usr/bin/ansible ]];
-  then
-    rpm-ostree install ansible-core 
-    sleep 2
-    echo "4" > ./counter
-    systemctl reboot
-  else
-    echo "Ansible Core already installed, skipping to step 4 without reboot"
-    echo "4" > ./counter
-  fi
-fi
-
-if [[ "4" = $(cat ./counter) ]]; then
   echo "############################################################"
-  echo "### fourth run, running ansible playbook, and rebooting. ###"
+  echo "### Third run, running ansible playbook, and rebooting. ###"
   echo "############################################################"
   # install the community general flatpak module
   ansible-galaxy collection install community.general
