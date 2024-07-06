@@ -10,13 +10,13 @@
   ansible.builtin.shell:
     cmd: distrobox enter fwsbox -e "{{ item }}"
   loop:
-    - "sudo dnf install -y htop"
-    - "sudo dnf install -y tldr"
-    - "sudo dnf install -y tmux"
-    - "sudo dnf install -y tree"
-    - "sudo dnf install -y dua-cli"
-    - "sudo dnf install -y which"
-    - "sudo dnf install -y feh"
+    - sudo dnf install -y htop
+    - sudo dnf install -y tldr
+    - sudo dnf install -y tmux
+    - sudo dnf install -y tree
+    - sudo dnf install -y dua-cli
+    - sudo dnf install -y which
+    - sudo dnf install -y feh
   changed_when: false
 
 - name: Export packages in fwsbox container
