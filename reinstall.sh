@@ -11,22 +11,22 @@ if [[ "1" = $(cat ./counter) ]]; then
 fi
 
 if [[ "2" = $(cat ./counter) ]]; then
-  echo "#####################################################"
+  echo "########################################################"
   echo "### Second run, installing rpmfusion, and rebooting. ###"
-  echo "#####################################################"
-  rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  echo "########################################################"
+  rpm-ostree install distrobox https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   sleep 2
   echo "3" > ./counter
   systemctl reboot
 fi
 
 if [[ "3" = $(cat ./counter) ]]; then
-  echo "#####################################################"
+  echo "##########################################################"
   echo "### Third run, Installing ansible-core, and rebooting. ###"
-  echo "#####################################################"
+  echo "##########################################################"
   if [[ ! -f /usr/bin/ansible ]];
   then
-    rpm-ostree install ansible-core
+    rpm-ostree install ansible-core 
     sleep 2
     echo "4" > ./counter
     systemctl reboot
@@ -37,9 +37,9 @@ if [[ "3" = $(cat ./counter) ]]; then
 fi
 
 if [[ "4" = $(cat ./counter) ]]; then
-  echo "#####################################################"
+  echo "############################################################"
   echo "### fourth run, running ansible playbook, and rebooting. ###"
-  echo "#####################################################"
+  echo "############################################################"
   # install the community general flatpak module
   ansible-galaxy collection install community.general
   ansible-playbook reinstall-playbook.yml -K

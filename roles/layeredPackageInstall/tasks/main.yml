@@ -6,5 +6,5 @@
 
 - name: Install desired layered packages
   community.general.rpm_ostree_pkg:
-    name: distrobox ffmpegthumbnailer neovim syncthing tailscale terminator tlp vim
+    name: wdisplays ffmpegthumbnailer neovim syncthing tailscale terminator tlp vim eza
     state: present
