@@ -40,6 +40,9 @@ if [[ "4" = $(cat ./counter) ]]; then
   ansible-galaxy collection install community.general
   ansible-playbook reinstall-playbook.yml -K
   sleep 2
+  # Ask for git username and email and put them in variable
+  read -p "Enter your Git username: " gitUserName
+  read -p "Enter your Git User Email: " gitUserEmail
   # Check if username or email is empty. if not, set git username and email
   if [[ -z "$gitUserName" || -z "$gitUserEmail" ]]; then
     git config --global user.name "$gitUserName"
