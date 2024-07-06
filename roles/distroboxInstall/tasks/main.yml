@@ -7,7 +7,7 @@
   changed_when: false
 
 - name: Install packages in fwsbox container
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: /usr/bin/distrobox enter fwsbox -e "{{ item }}"
   loop:
     - sudo dnf install -y htop
@@ -20,7 +20,7 @@
   changed_when: false
 
 - name: Export packages in fwsbox container
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: /usr/bin/distrobox enter fwsbox -- "{{ item }}"
   loop:
     - "distrobox-export -b /usr/bin/htop -ep $HOME/.local/bin"
