@@ -78,7 +78,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec /usr/bin/terminator
 bindsym $mod+Shift+Return exec i3-sensible-terminal
 
 # launch gnome-text-editor in a floating window
