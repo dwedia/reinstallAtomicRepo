@@ -2,3 +2,4 @@
   hosts: localhost
   roles:
     - i3/i3setup
+    - TerminatorSetup

@@ -1,0 +1,20 @@
+[global_config]
+borderless = True
+tap_position = top
+
+[keybindings]
+  split_horiz = <Primary>underscore
+  split_vert = <Primary>dead_grave
+  close_term = <Primary><Shift>q
+  close_window = <Primary>dead_circumflex
+  next_tab = <Primary>Right
+  prev_tab = <Primary>Left
+
+
+[profiles]
+  [[default]]
+    use_system_font = False
+    font = Source Code Pro Medium 14
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 10000
