@@ -7,8 +7,13 @@ tap_position = top
   split_vert = <Primary>dead_grave
   close_term = <Primary><Shift>q
   close_window = <Primary>dead_circumflex
-  next_tab = <Primary>Right
-  prev_tab = <Primary>Left
+  resize_up = <Primary><Shift><Alt>Up
+  resize_down = <Primary><Shift><Alt>Down
+  resize_left = <Primary><Shift><Alt>Left
+  resize_right = <Primary><Shift><Alt>Right
+  next_tab = <Primary><Shift>Right
+  prev_tab = <Primary><Shift>Left
+
 
 
 [profiles]
