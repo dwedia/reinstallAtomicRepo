@@ -26,7 +26,7 @@ if [[ "3" = $(cat ./counter) ]]; then
   echo "##############################################################"
   if [[ ! -f /usr/bin/ansible ]];
   then
-    rpm-ostree install --apply-live -y ansible-core distrobox ffmpegthumbnailer neovim syncthing terminator tlp vim eza
+    rpm-ostree install --apply-live -y ansible-core distrobox ffmpegthumbnailer neovim syncthing terminator tlp vim alacritty stow
     sleep 60
     echo "4" > ./counter
     # systemctl reboot
