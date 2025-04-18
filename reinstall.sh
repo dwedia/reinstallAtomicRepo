@@ -7,7 +7,7 @@ if [[ "1" = $(cat ./counter) ]]; then
   rpm-ostree upgrade
   sleep 2
   echo "2" > ./counter
-  systemctl reboot
+  read -p "Reboot now? (y/N): " confirm && [[ $confirm == "y" ]] && reboot
 fi
 
 if [[ "2" = $(cat ./counter) ]]; then
@@ -17,7 +17,7 @@ if [[ "2" = $(cat ./counter) ]]; then
   rpm-ostree install --apply-live -y  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   sleep 2
   echo "3" > ./counter
-  systemctl reboot
+  read -p "Reboot now? (y/N): " confirm && [[ $confirm == "y" ]] && reboot
 fi
 
 if [[ "3" = $(cat ./counter) ]]; then
@@ -66,5 +66,5 @@ if [[ "4" = $(cat ./counter) ]]; then
     sudo firewall-cmd --reload
   fi
   echo "0" > ./counter
-  #systemctl reboot
+  read -p "Reboot now? (y/N): " confirm && [[ $confirm == "y" ]] && reboot
 fi

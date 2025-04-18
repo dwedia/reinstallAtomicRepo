@@ -26,8 +26,10 @@
       - org.videolan.VLC
       - org.mozilla.firefox
       - com.brave.Browser
-      - org.freedesktop.Platform.ffmpeg-full/x86_64/22.08
-      - org.libreoffice.LibreOffice
+      - com.rustdesk.RustDesk
+      - org.remmina.Remmina
+      - org.freedesktop.Platform.ffmpeg-full/x86_64/24.08
+      - org.onlyoffice.desktopeditors
     method: user
 
 #- name: Reinstall any flatpaks from fedora repos to flathub
