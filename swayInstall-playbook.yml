@@ -1,3 +1,4 @@
 - name: Reinstall playbook
   hosts: localhost
   roles:
+    - sway/swaySetup
