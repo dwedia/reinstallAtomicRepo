@@ -1,0 +1,21 @@
+# Alacritty config.
+# Documentation here: https://alacritty.org/config-alacritty.html
+
+[window] 
+decorations = "full"
+dynamic_title = true
+
+[scrolling]
+history = 10000
+
+[font]
+# font settings
+normal = { family = "monospace", style = "Regular" }
+#bold = { style = "Bold" }
+#italic = { style = "Italic" }
+#bold_italic = { style = "Bold Italic" }
+size = 15.00
+
+[env]
+TERM = "xterm-256color"
+#TERM = "xterm"

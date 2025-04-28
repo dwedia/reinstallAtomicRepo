@@ -4,5 +4,6 @@
   roles:
     - role: systemSetup
     - role: flatpakInstall
-    #- role: layeredPackageInstall
+    - role: alacrittySetup
+    - role: terminatorSetup
     - role: distroboxInstall

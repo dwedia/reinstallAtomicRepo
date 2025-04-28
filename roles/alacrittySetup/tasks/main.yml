@@ -1,0 +1,17 @@
+---
+- name: Create terminator config folder
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/alacritty/"
+    state: directory
+    mode: 0744
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+
+- name: Copy terminator config
+  ansible.builtin.copy:
+    src: alacritty.toml
+    dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.toml"
+    mode: 0744
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    backup: true
