@@ -1,0 +1,10 @@
+# Keybinds for media controls
+
+
+bindsym {
+    $mod+F9 exec playerctl play-pause
+    $mod+F10 exec playerctl next
+    $mod+Shift+F10 exec playerctl previous
+    $mod+F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+    $mod+F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+}

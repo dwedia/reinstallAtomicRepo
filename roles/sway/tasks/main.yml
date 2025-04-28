@@ -1,0 +1,67 @@
+---
+- name: Create sway config folders
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/{{ item }}"
+    state: directory
+    mode: 0744
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+  loop:
+    - "sway"
+    - "sway/config.d"
+    - "waybar"
+
+# - name: Create sway config folder
+#   ansible.builtin.file:
+#     path: "{{ ansible_user_dir }}/.config/sway/"
+#     state: directory
+#     mode: 0744
+#     owner: "{{ ansible_user_id }}"
+#     group: "{{ ansible_user_id }}"
+
+# - name: Create sway config.d folder
+#   ansible.builtin.file:
+#     path: "{{ ansible_user_dir }}/.config/sway/config.d/"
+#     state: directory
+#     mode: 0744
+#     owner: "{{ ansible_user_id }}"
+#     group: "{{ ansible_user_id }}"
+
+# - name: Create sway config.d folder
+#   ansible.builtin.file:
+#     path: "{{ ansible_user_dir }}/.config/waybar/"
+#     state: directory
+#     mode: 0744
+#     owner: "{{ ansible_user_id }}"
+#     group: "{{ ansible_user_id }}"
+
+- name: Copy sway config
+  ansible.builtin.copy:
+    src: swayConfig
+    dest: "{{ ansible_user_dir }}/.config/sway/config"
+    mode: 0744
+    backup: true
+
+- name: Copy sway config
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ ansible_user_dir }}/.config/sway/config.d/{{ item.dest }}"
+    mode: 0744
+    backup: true
+  loop:
+    - src: bindings-media
+      dest: 70-bindings-media.conf
+    - src: bindings-screenshot
+      dest: 60-bindings-screenshot.conf
+
+- name: Copy waybar config
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ ansible_user_dir }}/.config/waybar/{{ item.dest }}"
+    mode: 0744
+    backup: true
+  loop:
+    - src: "waybar/config.jsonc"
+      dest: "config.jsonc"
+    - src: "waybar/style.css"
+      dest: "style.css"
